@@ -140,8 +140,8 @@ int TimestampIndexMapper::getIndexBeforeTimeNsNonTimeCode(
         // Convert both to nanoseconds in integer for comparison, to avoid precision issue when
         // comparing with double. Note that queryTimeNs has undergone int -> double -> int
         // conversion, in theory it should get back the same int64_t number as dataRecordTimeNs.
-        int64_t queryTimeNs = static_cast<int64_t>(std::floor(query->timestamp * 1e9));
-        int64_t dataRecordTimeNs = static_cast<int64_t>(dataRecord->timestamp * 1e9);
+        auto queryTimeNs = static_cast<int64_t>(std::floor(query->timestamp * 1e9));
+        auto dataRecordTimeNs = static_cast<int64_t>(dataRecord->timestamp * 1e9);
 
         return queryTimeNs < dataRecordTimeNs;
       });
